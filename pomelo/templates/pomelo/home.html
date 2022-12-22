@@ -10,7 +10,7 @@
 
 <body>
 <h1>POMELO</h1>
-<form action="{% url '' %}" method = "post">
+<form action="{% url 'pomelo:result' %}" method = "post">
     {% csrf_token %}
     <fieldset>     
         <legend><h1>pomelo project</h1></legend>
@@ -19,8 +19,6 @@
     </fieldset>
     <input type = "submit">
 </form>
-
-
 </body>
 
 </html>

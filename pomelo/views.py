@@ -7,7 +7,7 @@ from django.views import generic
 from django.utils import timezone
 
 def Home(request):
-    return HttpResponse("This is Home")
+    return render(request, 'pomelo/home.html', {})
 
 
 def result(request):
@@ -15,9 +15,9 @@ def result(request):
 
 
 
-class HomeView(generic.DetailView): 
-    template_name = 'home.html'
-    def get_queryset(self):
-        return 
+# class HomeView(generic.DetailView): 
+#     template_name = 'home.html'
+#     def get_queryset(self):
+#         return 
     
 
