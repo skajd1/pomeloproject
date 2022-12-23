@@ -19,8 +19,10 @@
             {% csrf_token %}
             <fieldset>     
                 <legend><h3>pomelo project</h3></legend>
-                <strong>URL :</strong> <input type="text" name = "url_input">
-                <input type = "submit" value ="입력">
+                {% if error %} <h4><p><strong>{{error}}</strong></p></h4> {%endif%}
+                <strong>URL :</strong> <input type="text" name = "url_input" style = "width : 500px;height : 20px" >
+                <input type = "submit" value ="입력" >
+
             </fieldset>  
         </form>
     </div>
