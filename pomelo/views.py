@@ -7,17 +7,13 @@ from django.views import generic
 from django.utils import timezone
 
 def Home(request):
-    return render(request, 'pomelo/home.html', {})
+    return render(request, 'pomelo/home.html')
 
+def SUBMIT(request):
+    url = URL.objects.create(address = request.POST["url_input"], text_data = "for test")
+    return HttpResponseRedirect(reverse('pomelo:result', args = (url.id,))) 
 
-def result(request):
-    return HttpResponse("This is result")
-
-
-
-# class HomeView(generic.DetailView): 
-#     template_name = 'home.html'
-#     def get_queryset(self):
-#         return 
-    
-
+class ResultsView(generic.DetailView):
+    model = URL
+    template_name = 'pomelo/result.html'
+    context_object_name = 'url'

@@ -3,22 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Pomelo</title>
 </head>
 
 
 
 <body>
-<h1>POMELO</h1>
-<form action="{% url 'pomelo:result' %}" method = "post">
-    {% csrf_token %}
-    <fieldset>     
-        <legend><h1>pomelo project</h1></legend>
-        URL : <input type="text" name = "url_input">
 
-    </fieldset>
-    <input type = "submit">
-</form>
+    <div>
+        <h1><a href="">Pomelo</a></h1>
+    </div>
+
+    <div>
+        <form action="{% url 'pomelo:submit'%}" method = "post">
+            {% csrf_token %}
+            <fieldset>     
+                <legend><h3>pomelo project</h3></legend>
+                <strong>URL :</strong> <input type="text" name = "url_input">
+                <input type = "submit" value ="입력">
+            </fieldset>  
+        </form>
+    </div>
+
+
 </body>
 
 </html>
