@@ -1,26 +1,31 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pomelo</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'pomelo/css/home.css' %}">
 </head>
 
 
 
 <body>
 
-    <div>
-        <h1><a href="">Pomelo</a></h1>
-    </div>
+    <div style="text-align:center"> <h1><a href="">Pomelo</a></h1></div>
 
-    <div>
+    <div style="text-align:center">
         <form action="{% url 'pomelo:submit'%}" method = "post">
             {% csrf_token %}
             <fieldset>     
                 <legend><h3>pomelo project</h3></legend>
-                {% if error %} <h4><p><strong>{{error}}</strong></p></h4> {%endif%}
-                <strong>URL :</strong> <input type="text" name = "url_input" style = "width : 500px;height : 20px" >
+                {% if error %}
+                    <h4><p><strong>{{error}}</strong></p></h4>
+                {%endif%}
+                <strong>URL :</strong> <input type="text" name = "url_input" style = "width : 500px;height : 25px">
                 <input type = "submit" value ="입력" >
 
             </fieldset>  
