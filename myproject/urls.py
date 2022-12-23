@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from pomelo import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('pomelo/', include('pomelo.urls')),
+    path('', views.Home, name = 'home'),
 
 ]

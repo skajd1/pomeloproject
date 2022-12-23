@@ -8,15 +8,11 @@ from django.utils import timezone
 from .validator import is_url_valid
 
 
-
-
-
-
 def Home(request):
     return render(request, 'pomelo/home.html')
 
 def SUBMIT(request):
-    r_address = request.POST["url_input"]
+    r_address = request.POST.get('url_input', False)
 
     if not r_address or not is_url_valid(r_address) :
         return render(request, 'pomelo/home.html', {'error' : "올바른 주소 형식을 입력하세요."})
