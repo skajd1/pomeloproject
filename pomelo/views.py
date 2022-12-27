@@ -6,6 +6,8 @@ from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from django.utils import timezone
 from .validator import is_url_valid
+from .get_html_text import get_html_text
+import re
 
 
 def Home(request):
@@ -16,7 +18,11 @@ def SUBMIT(request):
 
     if not r_address or not is_url_valid(r_address) :
         return render(request, 'pomelo/home.html', {'error' : "올바른 주소 형식을 입력하세요."})
-    url = URL.objects.create(address = r_address, text_data = "for test")
+    text = get_html_text(r_address)
+    text = re.sub(r"\n+", " ", text)
+    text = re.sub(r"\t+", " ", text)
+    sentences = re.split("[\.?!]\s+", text)
+    url = URL.objects.create(address = r_address, text_data = sentences)
 
 
     return HttpResponseRedirect(reverse('pomelo:result', args = (url.id,))) 
