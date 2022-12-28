@@ -8,8 +8,13 @@ def get_html_text(url):
     #r = requests.get(url, headers = header)
     r = requests.get(url)
     soup = BeautifulSoup(r.text, 'html.parser')
-    text = soup.select('div')[0].text
+    text = (soup.select('div')[0].text+ soup.select('div')[1].text)
     #text = list(filter(None, text))
+    # text = re.sub(r"\n+", " ", text)
+    # text = re.sub(r"\t+", " ", text)
+    # sentences = re.split("[\.?!]\s+", text)
+    # for x in sentences:
+    #   x.split()
     
     return text
 

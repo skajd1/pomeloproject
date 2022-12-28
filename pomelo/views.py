@@ -7,6 +7,7 @@ from django.views import generic
 from django.utils import timezone
 from .validator import is_url_valid
 from .get_html_text import get_html_text
+from .extract_summary import summary
 import re
 
 
@@ -22,7 +23,7 @@ def SUBMIT(request):
     text = re.sub(r"\n+", " ", text)
     text = re.sub(r"\t+", " ", text)
     sentences = re.split("[\.?!]\s+", text)
-    url = URL.objects.create(address = r_address, text_data = sentences)
+    url = URL.objects.create(address = r_address, text_data = summary(sentences))
 
 
     return HttpResponseRedirect(reverse('pomelo:result', args = (url.id,))) 
