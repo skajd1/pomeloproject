@@ -5,3 +5,8 @@ myproject
 db.sqlite3
 /static
 .DS_Store
+pomelo/views copy.py
+db.sqlite3
+pomelo/__pycache__/models.cpython-310.pyc
+pomelo/__pycache__/urls.cpython-310.pyc
+pomelo/__pycache__/views.cpython-310.pyc

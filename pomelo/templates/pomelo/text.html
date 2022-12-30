@@ -9,20 +9,14 @@
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="{% static 'pomelo/css/home.css' %}">
-        <div style="text-align:center"> <h1><a href="{% url 'pomelo:home'%}" >Pomelo</a></h1></div>
-        <div style="text-align:center">
+        <div style="text-align:center"><h1><a href="{% url 'pomelo:home'%}" >Pomelo</a></h1></div>
+        <div style="text-align:center">    
     </head>
 
     <body>
-        
         {% for sentence in text%}
         <ol> {{sentence}}</ol>
         {% endfor %}
-
-        <div><h2> this is result page</h2></div>
-        <a href = "{% url 'pomelo:home'%}"><h1>뒤로 가기</h1></a>
-
     </body>
-
 
 </html>

@@ -2,37 +2,63 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pomelo</title>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="{% static 'pomelo/css/home.css' %}">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pomelo</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'pomelo/css/home.css' %}">
+        <div style="text-align:center"><h1><a href="{% url 'pomelo:home'%}" >Pomelo</a></h1></div>
+        <div style="text-align:center">    
+    </head>
+
+
+    <body>
+        <div>
+            <form action="{% url 'pomelo:submit'%}" method = "post">
+                {% csrf_token %}
+                <fieldset>     
+                    <legend><h3>pomelo project</h3></legend>
+                    {% if error %}
+                        <h4><p><strong>{{error}}</strong></p></h4>
+                    {%endif%}
+                    
+                    <div class="select">
+                        <input type="radio" id="select" name="select" value = "text_selected" checked
+                        onclick = 'getselect(event)' />
+                        <label for="select">Text</label>
+
+                        <input type="radio" id="select2" name="select" value = "url_selected"
+                        onclick = 'getselect(event)'/>
+                        <label for="select2">URL</label> 
+                        <div id='result'><strong>요약할 텍스트를 입력하세요.</strong></div>
+                    </div>
+    
+                    <strong></strong> <input type="text" name = "user_input" id = "userinput" style = "width : 800px;height : 300px">
+                    <input type = "submit" value ="입력" >
+                </fieldset> 
+            </form>
+        </div>
 
 
 
-<body>
-
-    <div style="text-align:center"> <h1><a href="{% url 'pomelo:home'%}" >Pomelo</a></h1></div>
-
-    <div style="text-align:center">
-        <form action="{% url 'pomelo:submit'%}" method = "post">
-            {% csrf_token %}
-            <fieldset>     
-                <legend><h3>pomelo project</h3></legend>
-                {% if error %}
-                    <h4><p><strong>{{error}}</strong></p></h4>
-                {%endif%}
-                <strong>URL :</strong> <input type="text" name = "url_input" style = "width : 500px;height : 25px">
-                <input type = "submit" value ="입력" >
-
-            </fieldset>  
-        </form>
-    </div>
-
-
-</body>
-
+        <script type ="text/javascript">
+            function getselect(event)
+            {
+                if (event.target.id == 'select')
+                {
+                    document.getElementById('userinput').style = "width: 800px; height : 300px"
+                    document.getElementById('result').style = "font-weight : bolder "
+                    document.getElementById('result').innerText = '요약할 텍스트를 입력하세요.'
+                }
+                else if (event.target.id == 'select2')
+                {
+                    document.getElementById('userinput').style = "width: 300px; height : 25px"
+                    document.getElementById('result').style = "font-weight : bolder "
+                    document.getElementById('result').innerText = '텍스트를 추출할 URL을 입력하세요.'
+                }
+            }
+        </script>
+    </body>
 </html>

@@ -6,3 +6,30 @@ h3 {
     color :#1b8550;
     
 }
+.select {
+    padding: 15px 10px;
+}
+.select input[type=radio]{
+    display: none;
+}
+.select input[type=radio]+label{
+    display: inline-block;
+    cursor: pointer;
+    height: 24px;
+    width: 90px;
+    border: 1px solid #333;
+    line-height: 24px;
+    text-align: center;
+    font-weight:bold;
+    font-size:13px;
+}
+.select input[type=radio]+label{
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    font-weight : bolder;
+}
+.select input[type=radio]:checked+label{
+    background-color: rgb(43, 201, 103);
+    color: #fff;
+    font-weight : bolder;
+}
